@@ -115,14 +115,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* ## Number
 
-|      |  \|  |  &   |  =   |  +   |  @   |  %   |  #   |  *   |  $   |  ^   |      |
+|      |  @   |  &   |  =   |  ^   |  #   |  *   |  $   |  +   | \|   |  %   |      |
 |      |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |  9   |  0   |  \`  |
 |      |      |  [   |  {   |  (   |  ~   |  !   |  )   |  }   |  ]   |  \   |      |
 |      |      |      |      |      |      | \\/  |      |      |      |      |Normal|
  */
 
 [_NUMBER] = LAYOUT_planck_grid(
-    _______, KC_PIPE, KC_AMPR, KC_EQL,  KC_PLUS, KC_AT,   KC_PERC, KC_HASH, KC_ASTR, KC_DLR,  KC_CIRC, _______,
+    _______, KC_AT,   KC_AMPR, KC_EQL,  KC_CIRC, KC_HASH, KC_ASTR, KC_DLR,  KC_PLUS, KC_PIPE, KC_PERC, _______,
     _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
     _______, XXXXXXX, KC_LBRC, KC_LCBR, KC_LPRN, KC_TILD, KC_EXLM, KC_RPRN, KC_RCBR, KC_RBRC, KC_BSLS, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, NORMAL
@@ -131,32 +131,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* ## Arrows
 
-|      |      |      |A(->) |      |A(<-) |      | P_Up | P_Up |C(->) |      |      |
-|      |      |      |P_Down|      |      | Left | Down |  Up  |Right |C(<-) |      |
-|      |      |      |      |P_Down|A(<-) |      |      |      |      |      |      |
-|      |      |      |      |      |      |      | \\/  |      |      |      |Normal|
+|      |      | M_Up |A(->) |C(<-) |      |      |C(->) |M_Acc1|M_Acc2|      |      |
+|      | M_L  |M_Down| M_R  |      |      | Left | Down |  Up  |Right |C(<-) |      |
+|      |      |Wh_up |Wh_Dn |      |A(<-) |      |P_Down| P_Up |      |      |      |
+|      |      |      |M_Btn2|M_Btn1|      |      | \\/  |      |      |      |Normal|
  */
 
 [_ARROWS] = LAYOUT_planck_grid(
-    _______, _______, _______, ALTRGHT, _______, ALTLEFT, _______, KC_PGUP, KC_PGUP, CTLRGHT, _______, _______,
-    _______, _______, _______, KC_PGDN, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTLLEFT, _______,
-    _______, _______, _______, _______, KC_PGDN, ALTLEFT, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, NORMAL
+    _______, _______, KC_MS_U, ALTRGHT, CTLLEFT, _______, _______, CTLRGHT, KC_ACL1, KC_ACL2, _______, _______,
+    _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTLLEFT, _______,
+    _______, _______, KC_WH_D, KC_WH_U, _______, ALTLEFT, _______, KC_PGDN, KC_PGUP, _______, _______, _______,
+    _______, _______, _______, KC_BTN2, KC_BTN1, _______, _______, _______, _______, _______, _______, NORMAL
 ),
 
 /* ## Cursor
 
-|      |      |      |Wh_Dn |M_Btn2|      |      |Wh_Dn |Wh_Dn |      |      |      |
-|      |M_Acc2|M_Acc1|Wh_Up |M_Btn1|      | M_L  |M_Down| M_Up | M_R  |      |      |
-|      |      |      |      |Wh_Up |      |      |      |      |      |      |      |
-|      |      |      |      | \\/  |      |      |      |      |      |      |Normal|
+|      |      | M_Up |      |      |      |      |      |M_Acc1|M_Acc2|      |      |
+|      | M_L  |M_Down| M_R  |M_Btn1|      | Wh_L |Wh_Dn |Wh_Up | Wh_R |M_Btn2|      |
+|      |      |      |      |M_Btn2|      |      |M_Acc1|M_Acc2|      |      |      |
+|      |      |      |      | \\/  |      |M_Btn1|M_Btn1|M_Btn2|      |      |Normal|
  */
 
 [_CURSOR] = LAYOUT_planck_grid(
-    _______, _______, _______, KC_WH_D, KC_BTN2, _______, _______, KC_WH_D, KC_WH_D, _______, _______, _______,
-    _______, KC_ACL2, KC_ACL1, KC_WH_U, KC_BTN1, _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
-    _______, _______, _______, _______, KC_WH_U, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, NORMAL
+    _______, _______, KC_MS_U, _______, _______, _______, _______, _______, KC_ACL1, KC_ACL2, _______, _______,
+    _______, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN1, _______, KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R, KC_BTN2, _______,
+    _______, _______, _______, _______, KC_BTN2, _______, _______, KC_ACL1, KC_ACL2, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, KC_BTN1, KC_BTN1, KC_BTN2, _______, _______, NORMAL
 ),
 
 /* ## System
@@ -236,11 +236,15 @@ bool is_right_mod(uint16_t keycode) {
 }
 
 bool is_left_key(int row) {
-    return row < 4 || row == 7;
+    // return row < 4 || row == 7;
+    // return row <= 2 || row == 7;
+    return row <= 2;
 }
 
 bool is_right_key(int row) {
-    return row > 2;
+    // return row > 2;
+    return row >= 4 && row <= 6;
+    // return row >= 4 && row <= 7;
 }
 
 void tap_mods(int num_mods, uint16_t *mods, int *counts) {
@@ -248,12 +252,16 @@ void tap_mods(int num_mods, uint16_t *mods, int *counts) {
     for (int i = 0; i < num_mods; i++) {
         if (counts[i] == 0) {
             tap_code16(mods[i]);
+            // tap_code(QK_MOD_TAP_GET_TAP_KEYCODE(mods[i]));
 
             dprintf("TAPPED: 0x%04X\n", mods[i]);
             dprintln("----------------------------------");
         }
     }
 }
+
+// TODO: differential combo_mods (ctrl, gui, shft) from lone_mods (alt)
+// TODO: define allowed mods combos (alt) (ctrl + shft) (gui + shft)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static int l_mods = 0;
@@ -274,7 +282,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     if (l_mods > 0) {
         // opposite key
-        if (is_right_key(record->event.key.row)) {
+        // if (is_right_key(record->event.key.row)) {
+        if (!is_left_key(record->event.key.row)) {
             return true;
         }
         // sameside non-mod
@@ -284,7 +293,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
     } else if (r_mods > 0) {
         // opposite key
-        if (is_left_key(record->event.key.row)) {
+        // if (is_left_key(record->event.key.row)) {
+        if (!is_right_key(record->event.key.row)) {
             return true;
         }
         // sameside non-mod

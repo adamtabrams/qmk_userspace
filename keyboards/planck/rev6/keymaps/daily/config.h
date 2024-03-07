@@ -34,7 +34,8 @@
 #define MK_W_INTERVAL_UNMOD 80
 
 // Tap-Hold Configs
-#define TAPPING_TERM 155
+#define TAPPING_TERM 160
+// #define TAPPING_TERM 155
 // #define TAPPING_TERM 165
 #define PERMISSIVE_HOLD
 #define HOLD_ON_OTHER_KEY_PRESS
