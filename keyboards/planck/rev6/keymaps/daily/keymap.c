@@ -235,6 +235,27 @@ bool is_right_mod(uint16_t keycode) {
     return false;
 }
 
+bool is_shift(uint16_t keycode) {
+    switch (keycode) {
+        case SFT__D:
+        case SFT__S:
+        case SFT__K:
+        case SFT__E:
+            return true;
+    }
+    return false;
+}
+
+bool is_alt(uint16_t keycode) {
+    switch (keycode) {
+        case ALT__A:
+        case ALTSCLN:
+        case ALT__O:
+            return true;
+    }
+    return false;
+}
+
 bool is_left_key(int row) {
     // return row < 4 || row == 7;
     // return row <= 2 || row == 7;
@@ -247,6 +268,19 @@ bool is_right_key(int row) {
     // return row >= 4 && row <= 7;
 }
 
+// defines allowed mod combos (alt) (ctrl + shft) (gui + shft)
+bool is_valid_combo(uint16_t mod, uint16_t keycode) {
+    // non valid if neither is shift
+    if (!is_shift(keycode) && !is_shift(mod)) {
+        return false;
+    }
+    // non valid if either is alt
+    if (is_alt(keycode) || is_alt(mod)) {
+        return false;
+    }
+    return true;
+}
+
 void tap_mods(int num_mods, uint16_t *mods, int *counts) {
     clear_mods();
     for (int i = 0; i < num_mods; i++) {
@@ -255,13 +289,10 @@ void tap_mods(int num_mods, uint16_t *mods, int *counts) {
             // tap_code(QK_MOD_TAP_GET_TAP_KEYCODE(mods[i]));
 
             dprintf("TAPPED: 0x%04X\n", mods[i]);
-            dprintln("----------------------------------");
+            dprintf("----------------------------------\n");
         }
     }
 }
-
-// TODO: differential combo_mods (ctrl, gui, shft) from lone_mods (alt)
-// TODO: define allowed mods combos (alt) (ctrl + shft) (gui + shft)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static int l_mods = 0;
@@ -270,35 +301,45 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint16_t mods[4];
     bool is_l_mod = is_left_mod(keycode);
     bool is_r_mod = is_right_mod(keycode);
+    bool is_l_key = is_left_key(record->event.key.row);
+    bool is_r_key = is_right_key(record->event.key.row);
 
     if (record->event.pressed) {
-        dprintf("DOWN: 0x%04X, col: %u, row: %u\n", keycode, record->event.key.col, record->event.key.row);
+        dprintf("\nDOWN: 0x%04X, col: %u, row: %u\n", keycode, record->event.key.col, record->event.key.row);
     } else {
-        dprintf("UP:   0x%04X, col: %u, row: %u\n", keycode, record->event.key.col, record->event.key.row);
+        dprintf("\nUP:   0x%04X, col: %u, row: %u\n", keycode, record->event.key.col, record->event.key.row);
     }
     dprintf("l: %u, r: %u, m: %04X %04X %04X %04X\n", l_mods, r_mods, mods[0], mods[1], mods[2], mods[3]);
     dprintf("time: %5u, int: %u, count: %u\n", record->event.time, record->tap.interrupted, record->tap.count);
-    dprintln("----------------------------------");
+    dprintf("----------------------------------\n");
 
     if (l_mods > 0) {
-        // opposite key
-        // if (is_right_key(record->event.key.row)) {
-        if (!is_left_key(record->event.key.row)) {
+        // opposite side key
+        if (!is_l_key) {
             return true;
         }
         // sameside non-mod
-        if (!is_l_mod && record->event.pressed) {
+        if (record->event.pressed && !is_l_mod) {
+            tap_mods(l_mods, mods, counts);
+            return true;
+        }
+        // sameside non-valid mod combo
+        if (record->event.pressed && is_l_key && !is_valid_combo(mods[0], keycode)) {
             tap_mods(l_mods, mods, counts);
             return true;
         }
     } else if (r_mods > 0) {
-        // opposite key
-        // if (is_left_key(record->event.key.row)) {
-        if (!is_right_key(record->event.key.row)) {
+        // opposite side key
+        if (!is_r_key) {
             return true;
         }
         // sameside non-mod
         if (!is_r_mod && record->event.pressed) {
+            tap_mods(r_mods, mods, counts);
+            return true;
+        }
+        // sameside non-valid mod combo
+        if (record->event.pressed && is_r_key && !is_valid_combo(mods[0], keycode)) {
             tap_mods(r_mods, mods, counts);
             return true;
         }
