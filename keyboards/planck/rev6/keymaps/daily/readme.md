@@ -58,7 +58,7 @@
 |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |      |      | M_Up |      |      |      |      |      |M_Acc1|M_Acc2|      |      |
 |      | M_L  |M_Down| M_R  |M_Btn1|      | Wh_L |Wh_Dn |Wh_Up | Wh_R |M_Btn2|      |
-|      |      |      |      |M_Btn2|      |      |M_Acc1|M_Acc2|      |      |      |
+|      |      |Wh_Up |Wh_Dn |M_Btn2|      |      |M_Acc1|M_Acc2|      |      |      |
 |      |      |      |      | \\/  |      |M_Btn1|M_Btn1|M_Btn2|      |      |Normal|
 
 

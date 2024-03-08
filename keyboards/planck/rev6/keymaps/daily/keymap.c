@@ -132,30 +132,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* ## Arrows
 
 |      |      | M_Up |A(->) |C(<-) |      |      |C(->) |M_Acc1|M_Acc2|      |      |
-|      | M_L  |M_Down| M_R  |      |      | Left | Down |  Up  |Right |C(<-) |      |
-|      |      |Wh_up |Wh_Dn |      |A(<-) |      |P_Down| P_Up |      |      |      |
+|M_Acc2| M_L  |M_Down| M_R  |M_Btn1|      | Left | Down |  Up  |Right |C(<-) |      |
+|M_Acc1|      |Wh_Up |Wh_Dn |M_Btn2|A(<-) |      |P_Down| P_Up |      |      |      |
 |      |      |      |M_Btn2|M_Btn1|      |      | \\/  |      |      |      |Normal|
  */
 
 [_ARROWS] = LAYOUT_planck_grid(
     _______, _______, KC_MS_U, ALTRGHT, CTLLEFT, _______, _______, CTLRGHT, KC_ACL1, KC_ACL2, _______, _______,
-    _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTLLEFT, _______,
-    _______, _______, KC_WH_D, KC_WH_U, _______, ALTLEFT, _______, KC_PGDN, KC_PGUP, _______, _______, _______,
+    KC_ACL2, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN1, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTLLEFT, _______,
+    KC_ACL1, _______, KC_WH_D, KC_WH_U, KC_BTN2, ALTLEFT, _______, KC_PGDN, KC_PGUP, _______, _______, _______,
     _______, _______, _______, KC_BTN2, KC_BTN1, _______, _______, _______, _______, _______, _______, NORMAL
 ),
 
 /* ## Cursor
 
 |      |      | M_Up |      |      |      |      |      |M_Acc1|M_Acc2|      |      |
-|      | M_L  |M_Down| M_R  |M_Btn1|      | Wh_L |Wh_Dn |Wh_Up | Wh_R |M_Btn2|      |
-|      |      |      |      |M_Btn2|      |      |M_Acc1|M_Acc2|      |      |      |
+|M_Acc2| M_L  |M_Down| M_R  |M_Btn1|      | Wh_L |Wh_Dn |Wh_Up | Wh_R |M_Btn2|      |
+|M_ACC1|      |Wh_Up |Wh_Dn |M_Btn2|      |      |M_Acc1|M_Acc2|      |      |      |
 |      |      |      |      | \\/  |      |M_Btn1|M_Btn1|M_Btn2|      |      |Normal|
  */
 
 [_CURSOR] = LAYOUT_planck_grid(
     _______, _______, KC_MS_U, _______, _______, _______, _______, _______, KC_ACL1, KC_ACL2, _______, _______,
-    _______, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN1, _______, KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R, KC_BTN2, _______,
-    _______, _______, _______, _______, KC_BTN2, _______, _______, KC_ACL1, KC_ACL2, _______, _______, _______,
+    KC_ACL2, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN1, _______, KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R, KC_BTN2, _______,
+    KC_ACL1, _______, KC_WH_D, KC_WH_U, KC_BTN2, _______, _______, KC_ACL1, KC_ACL2, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, KC_BTN1, KC_BTN1, KC_BTN2, _______, _______, NORMAL
 ),
 
