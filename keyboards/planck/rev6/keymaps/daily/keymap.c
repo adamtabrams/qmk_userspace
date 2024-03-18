@@ -18,11 +18,8 @@
 
 enum planck_layers {
   _QWERTY,
-  _COLEMAK,
-  _SIMPLE,
   _NUMBER,
   _ARROWS,
-  _CURSOR,
   _SYSTEM,
   _KBOARD,
   _FMWARE
@@ -30,36 +27,23 @@ enum planck_layers {
 
 enum planck_keycodes {
   QWERTY = SAFE_RANGE,
-  COLEMAK,
-  SIMPLE,
   NORMAL
 };
 
 #define ARROWS TT(_ARROWS)
-#define CURSOR TT(_CURSOR)
 #define SYSTEM TT(_SYSTEM)
 #define KBOARD MO(_KBOARD)
 #define FMWARE MO(_FMWARE)
 
 #define NUMSPAC LT(_NUMBER, KC_SPC)
 #define SHFTESC LSFT_T(KC_ESC)
-#define SFTENTR SFT_T(KC_ENT)
 
-#define ALT__A  ALT_T(KC_A)
-#define ALTSCLN ALT_T(KC_SCLN)
-#define ALT__O  ALT_T(KC_O)
-#define GUI__S  GUI_T(KC_S)
-#define GUI__L  GUI_T(KC_L)
-#define GUI__R  GUI_T(KC_R)
-#define GUI__I  GUI_T(KC_I)
-#define SFT__D  SFT_T(KC_D)
-#define SFT__K  SFT_T(KC_K)
-#define SFT__S  SFT_T(KC_S)
-#define SFT__E  SFT_T(KC_E)
+#define ALT__S  ALT_T(KC_S)
+#define ALT__L  ALT_T(KC_L)
+#define GUI__D  GUI_T(KC_D)
+#define GUI__K  GUI_T(KC_K)
 #define CTL__F  CTL_T(KC_F)
 #define CTL__J  CTL_T(KC_J)
-#define CTL__T  CTL_T(KC_T)
-#define CTL__N  CTL_T(KC_N)
 
 #define ALTRGHT A(KC_RGHT)
 #define ALTLEFT A(KC_LEFT)
@@ -71,92 +55,46 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* ## Qwerty
 
 | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  |  -_  |
-| Bsp  | A(A) | G(S) | S(D) | C(F) |   G  |   H  | C(J) | S(K) | G(L) | A(;) |  '"  |
+| Bsp  |   A  | A(S) | G(D) | C(F) |   G  |   H  | C(J) | G(K) | A(L) |   ;  |  '"  |
 |   !  |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  | Enter|
-| CTRL |  GUI |  ALT |System|Cursor|S(Esc)|N(Spc)|Arrows| Left | Down |  Up  | Right|
+| CTRL |  GUI |  ALT |System| Bsp  |S(Esc)|N(Spc)|Arrows| Left | Down |  Up  | Right|
  */
 
 [_QWERTY] = LAYOUT_planck_grid(
     KC_TAB,  KC_Q,    KC_W,    KC_E,   KC_R,   KC_T,    KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,    KC_MINS,
-    KC_BSPC, ALT__A,  GUI__S,  SFT__D, CTL__F, KC_G,    KC_H,    CTL__J, SFT__K,  GUI__L,  ALTSCLN, KC_QUOT,
+    KC_BSPC, KC_A,    ALT__S,  GUI__D, CTL__F, KC_G,    KC_H,    CTL__J, GUI__K,  ALT__L,  KC_SCLN, KC_QUOT,
     KC_EXLM, KC_Z,    KC_X,    KC_C,   KC_V,   KC_B,    KC_N,    KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
-    KC_LCTL, KC_LGUI, KC_LALT, SYSTEM, CURSOR, SHFTESC, NUMSPAC, ARROWS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
-),
-
-/* ## Colemak
-
-| Tab  |   Q  |   W  |   F  |   P  |   B  |   J  |   L  |   U  |   Y  |   ;  |  -_  |
-| Bsp  | A(A) | G(R) | S(S) | C(T) |   G  |   M  | C(N) | S(E) | G(I) | A(O) |  '"  |
-|   !  |   Z  |   X  |   C  |   D  |   V  |   K  |   H  |   ,  |   .  |   /  | Enter|
-| CTRL |  GUI |  ALT |System|Cursor|S(Esc)|N(Spc)|Arrows| Left | Down |  Up  | Right|
- */
-
-[_COLEMAK] = LAYOUT_planck_grid(
-    KC_TAB,  KC_Q,    KC_W,    KC_F,   KC_P,   KC_B,    KC_J,    KC_L,   KC_U,    KC_Y,    KC_SCLN, KC_MINS,
-    KC_BSPC, ALT__A,  GUI__R,  SFT__S, CTL__T, KC_G,    KC_M,    CTL__N, SFT__E,  GUI__I,  ALT__O,  KC_QUOT,
-    KC_EXLM, KC_Z,    KC_X,    KC_C,   KC_D,   KC_V,    KC_K,    KC_H,   KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
-    KC_LCTL, KC_LGUI, KC_LALT, SYSTEM, CURSOR, SHFTESC, NUMSPAC, ARROWS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
-),
-
-/* ## Simple
-
-| Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bsp  |
-| Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  '"  |
-| SHFT |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |S(Ent)|
-| CTRL |  GUI |  ALT |System|Cursor|  Spc |N(Spc)|Arrows| Left | Down |  Up  | Right|
- */
-
-[_SIMPLE] = LAYOUT_planck_grid(
-    KC_TAB,  KC_Q,    KC_W,    KC_E,   KC_R,   KC_T,    KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
-    KC_ESC,  KC_A,    KC_S,    KC_D,   KC_F,   KC_G,    KC_H,    KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,   KC_V,   KC_B,    KC_N,    KC_M,   KC_COMM, KC_DOT,  KC_SLSH, SFTENTR,
-    KC_LCTL, KC_LGUI, KC_LALT, SYSTEM, CURSOR, KC_SPC,  NUMSPAC, ARROWS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_LCTL, KC_LGUI, KC_LALT, SYSTEM, KC_BSPC,SHFTESC, NUMSPAC, ARROWS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* ## Number
 
-|      |  @   |  &   |  =   |  ^   |  #   |  *   |  $   |  +   | \|   |  %   |      |
+|      |  @   |  &   |  =   |  *   |  #   |  ^   |  $   |  +   | \|   |  %   |      |
 |      |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |  9   |  0   |  \`  |
 |      |      |  [   |  {   |  (   |  ~   |  !   |  )   |  }   |  ]   |  \   |      |
-|      |      |      |      |      |      | \\/  |      |      |      |      |Normal|
+|      |      |      |      |      | Spc  | \\/  |      |      |      |      |Normal|
  */
 
 [_NUMBER] = LAYOUT_planck_grid(
-    _______, KC_AT,   KC_AMPR, KC_EQL,  KC_CIRC, KC_HASH, KC_ASTR, KC_DLR,  KC_PLUS, KC_PIPE, KC_PERC, _______,
+    _______, KC_AT,   KC_AMPR, KC_EQL,  KC_ASTR, KC_HASH, KC_CIRC, KC_DLR,  KC_PLUS, KC_PIPE, KC_PERC, _______,
     _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
     _______, XXXXXXX, KC_LBRC, KC_LCBR, KC_LPRN, KC_TILD, KC_EXLM, KC_RPRN, KC_RCBR, KC_RBRC, KC_BSLS, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, NORMAL
+    _______, _______, _______, _______, _______, KC_SPC,  _______, _______, _______, _______, _______, NORMAL
 ),
-
 
 /* ## Arrows
 
 |      |      | M_Up |A(->) |C(<-) |      |      |C(->) |M_Acc1|M_Acc2|      |      |
-|M_Acc2| M_L  |M_Down| M_R  |M_Btn1|      | Left | Down |  Up  |Right |C(<-) |      |
-|M_Acc1|      |Wh_Up |Wh_Dn |M_Btn2|A(<-) |      |P_Down| P_Up |      |      |      |
+|      | M_L  |M_Down| M_R  |      |      | Left | Down |  Up  |Right |C(<-) |      |
+|      |      |Wh_Up |Wh_Dn |      |A(<-) |      |P_Down| P_Up |      |      |      |
 |      |      |      |M_Btn2|M_Btn1|      |      | \\/  |      |      |      |Normal|
  */
 
 [_ARROWS] = LAYOUT_planck_grid(
-    _______, _______, KC_MS_U, ALTRGHT, CTLLEFT, _______, _______, CTLRGHT, KC_ACL1, KC_ACL2, _______, _______,
-    KC_ACL2, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN1, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTLLEFT, _______,
-    KC_ACL1, _______, KC_WH_D, KC_WH_U, KC_BTN2, ALTLEFT, _______, KC_PGDN, KC_PGUP, _______, _______, _______,
+    _______, XXXXXXX, KC_MS_U, ALTRGHT, CTLLEFT, XXXXXXX, XXXXXXX, CTLRGHT, KC_ACL1, KC_ACL2, XXXXXXX, XXXXXXX,
+    _______, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTLLEFT, XXXXXXX,
+    XXXXXXX, XXXXXXX, KC_WH_D, KC_WH_U, XXXXXXX, ALTLEFT, XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX, _______,
     _______, _______, _______, KC_BTN2, KC_BTN1, _______, _______, _______, _______, _______, _______, NORMAL
-),
-
-/* ## Cursor
-
-|      |      | M_Up |      |      |      |      |      |M_Acc1|M_Acc2|      |      |
-|M_Acc2| M_L  |M_Down| M_R  |M_Btn1|      | Wh_L |Wh_Dn |Wh_Up | Wh_R |M_Btn2|      |
-|M_ACC1|      |Wh_Up |Wh_Dn |M_Btn2|      |      |M_Acc1|M_Acc2|      |      |      |
-|      |      |      |      | \\/  |      |M_Btn1|M_Btn1|M_Btn2|      |      |Normal|
- */
-
-[_CURSOR] = LAYOUT_planck_grid(
-    _______, _______, KC_MS_U, _______, _______, _______, _______, _______, KC_ACL1, KC_ACL2, _______, _______,
-    KC_ACL2, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN1, _______, KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R, KC_BTN2, _______,
-    KC_ACL1, _______, KC_WH_D, KC_WH_U, KC_BTN2, _______, _______, KC_ACL1, KC_ACL2, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, KC_BTN1, KC_BTN1, KC_BTN2, _______, _______, NORMAL
 ),
 
 /* ## System
@@ -164,14 +102,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  | F10  | F11  | F12  |
 |      |      |Pr_Scn|Pr_Scn|      |      |Brght-| Vol- | Vol+ |Brght+| Mute |      |
 |      |      |      |      |      |      |      | Mute |P_Trac|N_Trac|      | Play |
-|KBoard|      |      | \\/  |      |      |      |      |Simple|Qwerty|Colemk|Normal|
+|KBoard|      |      | \\/  |      |      |      |      |      |      |      |Normal|
  */
 
 [_SYSTEM] = LAYOUT_planck_grid(
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-    _______, XXXXXXX, KC_PSCR, KC_PSCR, XXXXXXX, XXXXXXX, KC_BRID, KC_VOLD, KC_VOLU, KC_BRIU, KC_MUTE, _______,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, KC_MPRV, KC_MNXT, XXXXXXX, KC_MPLY,
-    KBOARD,  _______, _______, _______, _______, _______, _______, _______, SIMPLE,  QWERTY,  COLEMAK, NORMAL
+    XXXXXXX, XXXXXXX, KC_PSCR, KC_PSCR, XXXXXXX, XXXXXXX, KC_BRID, KC_VOLD, KC_VOLU, KC_BRIU, KC_MUTE, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, KC_MPRV, KC_MNXT, XXXXXXX, KC_MPLY,
+    KBOARD,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, NORMAL
 ),
 
 /* ## KBoard
@@ -208,13 +146,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool is_left_mod(uint16_t keycode) {
     switch (keycode) {
-        case ALT__A:
-        case GUI__S:
-        case SFT__D:
+        case ALT__S:
+        case GUI__D:
         case CTL__F:
-        case GUI__R:
-        case SFT__S:
-        case CTL__T:
             return true;
     }
     return false;
@@ -222,83 +156,35 @@ bool is_left_mod(uint16_t keycode) {
 
 bool is_right_mod(uint16_t keycode) {
     switch (keycode) {
-        case ALTSCLN:
-        case GUI__L:
-        case SFT__K:
+        case ALT__L:
+        case GUI__K:
         case CTL__J:
-        case ALT__O:
-        case GUI__I:
-        case SFT__E:
-        case CTL__N:
-            return true;
-    }
-    return false;
-}
-
-bool is_shift(uint16_t keycode) {
-    switch (keycode) {
-        case SFT__D:
-        case SFT__S:
-        case SFT__K:
-        case SFT__E:
-            return true;
-    }
-    return false;
-}
-
-bool is_alt(uint16_t keycode) {
-    switch (keycode) {
-        case ALT__A:
-        case ALTSCLN:
-        case ALT__O:
             return true;
     }
     return false;
 }
 
 bool is_left_key(int row) {
-    // return row < 4 || row == 7;
-    // return row <= 2 || row == 7;
     return row <= 2;
 }
 
 bool is_right_key(int row) {
-    // return row > 2;
     return row >= 4 && row <= 6;
-    // return row >= 4 && row <= 7;
 }
 
-// defines allowed mod combos (alt) (ctrl + shft) (gui + shft)
-bool is_valid_combo(uint16_t mod, uint16_t keycode) {
-    // non valid if neither is shift
-    if (!is_shift(keycode) && !is_shift(mod)) {
-        return false;
-    }
-    // non valid if either is alt
-    if (is_alt(keycode) || is_alt(mod)) {
-        return false;
-    }
-    return true;
-}
-
-void tap_mods(int num_mods, uint16_t *mods, int *counts) {
-    clear_mods();
-    for (int i = 0; i < num_mods; i++) {
-        if (counts[i] == 0) {
-            tap_code16(mods[i]);
-            // tap_code(QK_MOD_TAP_GET_TAP_KEYCODE(mods[i]));
-
-            dprintf("TAPPED: 0x%04X\n", mods[i]);
-            dprintf("----------------------------------\n");
-        }
+void tap_if_needed(uint16_t keycode, int count) {
+    if (count == 0) {
+        tap_code16(keycode);
+        dprintf("TAPPED: 0x%04X\n", keycode);
+        dprintf("----------------------------------\n");
     }
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    static int l_mods = 0;
-    static int r_mods = 0;
-    static int counts[4];
-    static uint16_t mods[4];
+    static uint16_t mod;
+    static int count;
+    static bool l_mod_active = false;
+    static bool r_mod_active = false;
     bool is_l_mod = is_left_mod(keycode);
     bool is_r_mod = is_right_mod(keycode);
     bool is_l_key = is_left_key(record->event.key.row);
@@ -309,70 +195,42 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     } else {
         dprintf("\nUP:   0x%04X, col: %u, row: %u\n", keycode, record->event.key.col, record->event.key.row);
     }
-    dprintf("l: %u, r: %u, m: %04X %04X %04X %04X\n", l_mods, r_mods, mods[0], mods[1], mods[2], mods[3]);
+    dprintf("l: %u, r: %u, m: %04X\n", l_mod_active, r_mod_active, mod);
     dprintf("time: %5u, int: %u, count: %u\n", record->event.time, record->tap.interrupted, record->tap.count);
     dprintf("----------------------------------\n");
 
-    if (l_mods > 0) {
-        // opposite side key
-        if (!is_l_key) {
-            return true;
-        }
-        // sameside non-mod
-        if (record->event.pressed && !is_l_mod) {
-            tap_mods(l_mods, mods, counts);
-            return true;
-        }
-        // sameside non-valid mod combo
-        if (record->event.pressed && is_l_key && !is_valid_combo(mods[0], keycode)) {
-            tap_mods(l_mods, mods, counts);
-            return true;
-        }
-    } else if (r_mods > 0) {
-        // opposite side key
-        if (!is_r_key) {
-            return true;
-        }
-        // sameside non-mod
-        if (!is_r_mod && record->event.pressed) {
-            tap_mods(r_mods, mods, counts);
-            return true;
-        }
-        // sameside non-valid mod combo
-        if (record->event.pressed && is_r_key && !is_valid_combo(mods[0], keycode)) {
-            tap_mods(r_mods, mods, counts);
-            return true;
-        }
+    // opposite side
+    if ((l_mod_active && !is_l_key) || (r_mod_active && !is_r_key)) {
+        return true;
     }
 
-    // sameside mod
-    if (is_l_mod || is_r_mod) {
-        if (record->event.pressed) {
-            counts[l_mods + r_mods] = record->tap.count;
-            mods[l_mods + r_mods] = keycode;
-            l_mods += is_l_mod;
-            r_mods += is_r_mod;
-        } else if (l_mods + r_mods > 0) {
-            l_mods -= is_l_mod;
-            r_mods -= is_r_mod;
+    // same side
+    if (record->event.pressed && (l_mod_active || r_mod_active)) {
+        clear_mods();
+        tap_if_needed(mod, count);
+        if (is_l_mod || is_r_mod) {
+            tap_if_needed(keycode, record->tap.count);
         }
         return true;
     }
 
-    switch (keycode) {
-        case QWERTY:
-            set_single_persistent_default_layer(_QWERTY);
-            return true;
+    // activate mod
+    if (record->event.pressed && (is_l_mod || is_r_mod)) {
+        l_mod_active = is_l_mod;
+        r_mod_active = is_r_mod;
+        mod = keycode;
+        count = record->tap.count;
+        return true;
+    }
 
-        case COLEMAK:
-            set_single_persistent_default_layer(_COLEMAK);
-            return true;
+    // disactivate mod
+    if (l_mod_active || r_mod_active) {
+        l_mod_active = false;
+        r_mod_active = false;
+        return true;
+    }
 
-        case SIMPLE:
-            set_single_persistent_default_layer(_SIMPLE);
-            return true;
-
-        case NORMAL:
+    if (keycode == NORMAL) {
             layer_clear();
             return false;
     }
@@ -382,9 +240,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case SHFTESC:
         case NUMSPAC:
-        case SFTENTR:
+        case SHFTESC:
             return 0;
         default:
             return QUICK_TAP_TERM;
@@ -394,21 +251,12 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case NUMSPAC:
-        case ALT__A:
-        case ALTSCLN:
-        case ALT__O:
-        case GUI__S:
-        case GUI__L:
-        case GUI__R:
-        case GUI__I:
-        case SFT__D:
-        case SFT__K:
-        case SFT__S:
-        case SFT__E:
+        case ALT__S:
+        case ALT__L:
+        case GUI__D:
+        case GUI__K:
         case CTL__F:
         case CTL__J:
-        case CTL__T:
-        case CTL__N:
             return false;
         default:
             return true;
