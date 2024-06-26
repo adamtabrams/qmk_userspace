@@ -17,18 +17,23 @@
 #pragma once
 
 // General Configs
-#define NO_ACTION_ONESHOT
 #define FORCE_NKRO
+/* #define NO_ACTION_ONESHOT */
+#define ONESHOT_TIMEOUT 1000
+#define ONESHOT_TAP_TOGGLE 2
 
 // Layer Toggle
 #undef TAPPING_TOGGLE
-#define TAPPING_TOGGLE 3
+/* #define TAPPING_TOGGLE 3 */
+#define TAPPING_TOGGLE 2
 
 // Mouse Configs
 #define MK_3_SPEED
 #define MK_MOMENTARY_ACCEL
 #define MK_C_OFFSET_1 4
-#define MK_C_OFFSET_UNMOD 14
+/* #define MK_C_OFFSET_UNMOD 14 */
+/* #define MK_C_OFFSET_UNMOD 20 */
+#define MK_C_OFFSET_UNMOD 18
 #define MK_C_OFFSET_2 28
 // for MK_W lower is faster
 #define MK_W_INTERVAL_UNMOD 80
