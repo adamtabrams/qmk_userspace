@@ -16,34 +16,48 @@
 
 #pragma once
 
-// General Configs
+/* General Configs */
+
 #define FORCE_NKRO
-/* #define NO_ACTION_ONESHOT */
 #define ONESHOT_TIMEOUT 1000
 #define ONESHOT_TAP_TOGGLE 2
+// #define NO_ACTION_ONESHOT
 
-// Layer Toggle
+/* Layer Toggle */
+
 #undef TAPPING_TOGGLE
-/* #define TAPPING_TOGGLE 3 */
 #define TAPPING_TOGGLE 2
+// #define TAPPING_TOGGLE 3
 
-// Mouse Configs
+/* Mouse Configs */
+
 #define MK_3_SPEED
 #define MK_MOMENTARY_ACCEL
 #define MK_C_OFFSET_1 4
-/* #define MK_C_OFFSET_UNMOD 14 */
-/* #define MK_C_OFFSET_UNMOD 20 */
 #define MK_C_OFFSET_UNMOD 18
+// #define MK_C_OFFSET_UNMOD 14
+// #define MK_C_OFFSET_UNMOD 20
 #define MK_C_OFFSET_2 28
-// for MK_W lower is faster
 #define MK_W_INTERVAL_UNMOD 80
+// ^ lower MK_W means faster
 
-// Tap-Hold Configs
-#define TAPPING_TERM 160
+/* Tap-Hold Configs */
+
+// interval within which a press is considered a tap
+#define TAPPING_TERM 140
+// #define TAPPING_TERM 160
 // #define TAPPING_TERM 155
 // #define TAPPING_TERM 165
+
+// interval within which a double press counts as repeated taps
+#define QUICK_TAP_TERM 110
+// #define QUICK_TAP_TERM 120
+// #define QUICK_TAP_TERM 100
+#define QUICK_TAP_TERM_PER_KEY
+
+// while pressed, consider held if another key is tapped
 #define PERMISSIVE_HOLD
+
+// while pressed, consider held if another key is pressed (rolling mod)
 #define HOLD_ON_OTHER_KEY_PRESS
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
-#define QUICK_TAP_TERM 120
-#define QUICK_TAP_TERM_PER_KEY
