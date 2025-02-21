@@ -1,3 +1,5 @@
+<!-- TODO: require chording for homerow mods? -->
+
 ## Qwerty
 
 |------|------|------|------|------|------|------|------|------|------|------|------|
@@ -5,7 +7,7 @@
 |   Q  |   W  |   E  |   R  |   T  |      |   Y  |   U  |   I  |   O  |   P  | Bsp  |
 |   A  | C(S) | G(D) |Sym(F)|   G  |      |   H  |Sym(J)| G(K) | C(L) |   ;  |  '"  |
 |   Z  |   X  |   C  | A(V) |   B  |      |   N  | A(M) |   ,  |   .  |   /  | Sft  |
-|      |      |System|OS_Num|S(Esc)| Bsp  |Arr( )| Ntr  |      | Alt  | Gui  | Ctl  |
+|      |      |System|OS_Num|S(Esc)| Bsp  |Arr( )| Ntr  | Alt  | Gui  | Ctl  | Ntr  |
 
 ## Symbol
 

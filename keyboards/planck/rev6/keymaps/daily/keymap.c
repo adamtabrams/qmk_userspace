@@ -63,14 +63,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 |   Q  |   W  |   E  |   R  |   T  |      |   Y  |   U  |   I  |   O  |   P  | Bsp  |
 |   A  | C(S) | G(D) |Sym(F)|   G  |      |   H  |Sym(J)| G(K) | C(L) |   ;  |  '"  |
 |   Z  |   X  |   C  | A(V) |   B  |      |   N  | A(M) |   ,  |   .  |   /  | Sft  |
-|      |      |System|OS_Num|S(Esc)| Bsp  |Arr( )| Ntr  |      | Alt  | Gui  | Ctl  |
+|      |      |System|OS_Num|S(Esc)| Bsp  |Arr( )| Ntr  | Alt  | Gui  | Ctl  | Ntr  |
  */
 
 [_QWERTY] = LAYOUT_planck_grid(
     KC_Q,    KC_W,    KC_E,   KC_R,   KC_T,   XXXXXXX, KC_Y,   KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_A,    CTL__S,  GUI__D, SYM__F, KC_G,   XXXXXXX, KC_H,   SYM__J,  GUI__K,  CTL__L,  KC_SCLN, KC_QUOT,
     KC_Z,    KC_X,    KC_C,   ALT__V, KC_B,   XXXXXXX, KC_N,   ALT__M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-    XXXXXXX, XXXXXXX, SYSTEM, OS_NUM, SFTESC, KC_BSPC, ARRSPC, KC_ENT,  XXXXXXX, KC_RALT, KC_RGUI, KC_RCTL
+    XXXXXXX, XXXXXXX, SYSTEM, OS_NUM, SFTESC, KC_BSPC, ARRSPC, KC_ENT,  KC_RALT, KC_RGUI, KC_RCTL, KC_ENT
 ),
 
 /* ## Symbol
