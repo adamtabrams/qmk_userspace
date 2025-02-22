@@ -75,16 +75,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* ## Symbol
 
-|  @   |      | \[   | \]   |  #   |      |      |  _   |  !   | \|   |  +   |      |
-|  &   |  $   |  (   |  )   |  *   |      |  ^   |  =   |  *   |  -   |  ~   | \`   |
-|  %   |      |  {   |  }   |      |      |  *   |  +   |      |  !   |  \   |      |
+|  @   |      | \[   | \]   |  ~   |      |      |  _   |  %   | \|   |  +   |      |
+|  &   |  $   |  (   |  )   |  *   |      |  #   |  =   |  !   |  -   |  :   | \`   |
+|  %   |  ^   |  {   |  }   |      |      |  *   |  +   |  <   |  >   |  \   |      |
 |      |      |      |      |      |      | Tab  |      |      |      |      |      |
  */
 
 [_SYMBOL] = LAYOUT_planck_grid(
-    KC_AT,   XXXXXXX, KC_LBRC, KC_RBRC, KC_HASH, XXXXXXX, XXXXXXX, KC_UNDS, KC_EXLM, KC_PIPE, KC_PLUS, _______,
-    KC_AMPR, KC_DLR,  KC_LPRN, KC_RPRN, KC_ASTR, XXXXXXX, KC_CIRC, KC_EQL,  KC_ASTR, KC_MINS, KC_TILD, KC_GRV,
-    KC_PERC, XXXXXXX, KC_LCBR, KC_RCBR, XXXXXXX, XXXXXXX, KC_ASTR, KC_PLUS, XXXXXXX, KC_EXLM, KC_BSLS, _______,
+    KC_AT,   XXXXXXX, KC_LBRC, KC_RBRC, KC_TILD, XXXXXXX, XXXXXXX, KC_UNDS, KC_PERC, KC_PIPE, KC_PLUS, _______,
+    KC_AMPR, KC_DLR,  KC_LPRN, KC_RPRN, KC_ASTR, XXXXXXX, KC_HASH, KC_EQL,  KC_EXLM, KC_MINS, KC_COLN, KC_GRV,
+    KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, XXXXXXX, XXXXXXX, KC_ASTR, KC_PLUS, KC_LABK, KC_RABK, KC_BSLS, _______,
     _______, _______, _______, _______, _______, _______, KC_TAB,  _______, _______, _______, _______, _______
 ),
 
