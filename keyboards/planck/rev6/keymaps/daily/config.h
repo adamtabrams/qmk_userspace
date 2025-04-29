@@ -61,3 +61,6 @@
 // while pressed, consider held if another key is pressed (rolling mod)
 #define HOLD_ON_OTHER_KEY_PRESS
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+
+
+#define COMBO_MUST_HOLD_MODS
