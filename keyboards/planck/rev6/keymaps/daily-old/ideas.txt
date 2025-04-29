@@ -1,0 +1,9 @@
+mouse
+- left/right and up/down
+- lower + wasd
+
+scrolling
+- right hand only
+
+arrow keys
+- raise + hjkl
