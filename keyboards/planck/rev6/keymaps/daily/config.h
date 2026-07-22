@@ -18,7 +18,7 @@
 
 /* General Configs */
 
-#define FORCE_NKRO
+#define NKRO_DEFAULT_ON true
 #define ONESHOT_TIMEOUT 1000
 #define ONESHOT_TAP_TOGGLE 2
 // #define NO_ACTION_ONESHOT
@@ -44,7 +44,9 @@
 /* Tap-Hold Configs */
 
 // interval within which a press is considered a tap
-#define TAPPING_TERM 140
+// #define TAPPING_TERM 140
+#define TAPPING_TERM 200
+
 // #define TAPPING_TERM 160
 // #define TAPPING_TERM 155
 // #define TAPPING_TERM 165
@@ -58,9 +60,13 @@
 // while pressed, consider held if another key is tapped
 #define PERMISSIVE_HOLD
 
+// prevents same handed mods from firing unless held past tapping term
+#define CHORDAL_HOLD
+
 // while pressed, consider held if another key is pressed (rolling mod)
 #define HOLD_ON_OTHER_KEY_PRESS
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 
-#define COMBO_MUST_HOLD_MODS
+// #define COMBO_MUST_HOLD_MODS
+#define ACTION_DEBUG
